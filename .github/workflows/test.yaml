@@ -1,0 +1,16 @@
+name: SoftDB
+on: push
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        go: ['1.14', '1.15', '1.16']
+        os: ['windows-latest', 'ubuntu-latest', 'macos-latest']
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.go }}
+      - run: go test -v ./...
