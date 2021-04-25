@@ -18,6 +18,6 @@ type (
 )
 
 const (
-	InsertTypeBefore InsertType = iota
-	InsertTypeAfter
+	Before InsertType = iota
+	After
 )
