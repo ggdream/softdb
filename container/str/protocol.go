@@ -1,10 +1,10 @@
 package str
 
 type StringCmd interface {
-	Set([]byte)
+	Set(value []byte)
 	Get() []byte
-	Append([]byte) []byte
-	Length() uint
-	IsInt() bool
+	GetSet(value []byte) []byte
+	Append(value []byte) []byte
+	StrLen() int
 	String() string
 }

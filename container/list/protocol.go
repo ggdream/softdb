@@ -5,15 +5,16 @@ type (
 	InsertType	int
 
 	ListCmd interface {
-		Lpush(key []byte, values ...[]byte) (uint, error)
-		RPush(key []byte, values ...[]byte) (uint, error)
-		LPop(key []byte) ([]byte, error)
-		RPop(key []byte) ([]byte, error)
-		LRange(key []byte, sIdx, eIdx int) ([][]byte, error)
-		LIndex(key []byte, idx int) ([]byte, error)
-		LSet(key, value []byte, idx int) error
-		LRem(key, value []byte, count int) (uint, error)
-		LInsert(key []byte, insertType InsertType, pivot, value []byte) (uint, error)
+		LPush(values ...[]byte) int
+		RPush(values ...[]byte) int
+		LPop() ([]byte, error)
+		RPop() ([]byte, error)
+		LRange(sIdx, eIdx int) ([][]byte, error)
+		LIndex(idx int) ([]byte, error)
+		LInsert(insertType InsertType, pivot, value []byte) int
+		LLen() int
+		LSet(idx int, value []byte) error
+		LRem(value []byte, count int) int
 	}
 )
 
