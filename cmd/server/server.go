@@ -60,9 +60,11 @@ label:
 
 func (s *Server) handleConn(conn net.Conn) {
 	defer conn.Close()
+        bufReader := bufio.NewReader(conn)
+
 	for {
 		_ = conn.SetReadDeadline(time.Now().Add(time.Hour))
-		bufReader := bufio.NewReader(conn)
+		
 		buf := make([]byte, 4)
 		_, err := bufReader.Read(buf)
 		if err != nil {
